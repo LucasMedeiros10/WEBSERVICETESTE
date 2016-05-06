@@ -4,10 +4,10 @@
 // WSDL     : http://localhost:8080/wsdl/IWSFutSystem
 //  >Import : http://localhost:8080/wsdl/IWSFutSystem>0
 // Version  : 1.0
-// (30/04/2016 23:45:23 - - $Rev: 76228 $)
+// (26/04/2016 23:38:03 - - $Rev: 76228 $)
 // ************************************************************************ //
 
-unit IWSFutSystem112;
+unit IWSFutSystem11;
 
 interface
 
@@ -117,21 +117,9 @@ type
   private
     FPar_Codigo: Integer;
     FAtl_Codigo: Integer;
-    FTim_Codigo: Integer;
-    FGols: Integer;
-    FCartAmarelo: Integer;
-    FCartVermelho: Integer;
-    FAssistencias: Integer;
-    FCompareceu: string;
   published
-    property Par_Codigo:   Integer  read FPar_Codigo write FPar_Codigo;
-    property Atl_Codigo:   Integer  read FAtl_Codigo write FAtl_Codigo;
-    property Tim_Codigo:   Integer  read FTim_Codigo write FTim_Codigo;
-    property Gols:         Integer  read FGols write FGols;
-    property CartAmarelo:  Integer  read FCartAmarelo write FCartAmarelo;
-    property CartVermelho: Integer  read FCartVermelho write FCartVermelho;
-    property Assistencias: Integer  read FAssistencias write FAssistencias;
-    property Compareceu:   string   read FCompareceu write FCompareceu;
+    property Par_Codigo: Integer  read FPar_Codigo write FPar_Codigo;
+    property Atl_Codigo: Integer  read FAtl_Codigo write FAtl_Codigo;
   end;
 
 
@@ -297,15 +285,15 @@ type
   // ************************************************************************ //
   IWSFutSystem = interface(IInvokable)
   ['{8C81B5B6-1369-96F7-357F-A4E3AB63B70C}']
-    function  GetAtletas(const Codigo: Integer = 0): TListAtletas; stdcall;
-    function  GetCampos(const Codigo: Integer = 0): TListCampos; stdcall;
+    function  GetAtletas: TListAtletas; stdcall;
+    function  GetCampos: TListCampos; stdcall;
     function  GetCidades(const UF: string): TListCidades; stdcall;
     function  GetEstados: TListEstados; stdcall;
-    function  GetPartidas(const Codigo: Integer = 0): TListPartidas; stdcall;
-    function  GetPartidasAtletas(const Par_Codigo: Integer; const Atl_Codigo: Integer): TListPartidasAtletas; stdcall;
-    function  GetTimes(const Codigo: Integer = 0): TListTimes; stdcall;
-    function  GetTimesAtletas(const Tim_Codigo: Integer = 0; const Atl_Codigo: Integer = 0): TListTimesAtletas; stdcall;
-    function  ValidaLogin(const Email: string; const Senha: string; const TipoLogin: TTipoLogin): Integer; stdcall;
+    function  GetPartidas: TListPartidas; stdcall;
+    function  GetPartidasAtletas: TListPartidasAtletas; stdcall;
+    function  GetTimes: TListTimes; stdcall;
+    function  GetTimesAtletas: TListTimesAtletas; stdcall;
+    function  ValidaLogin(const Email: string; const Senha: string; const TipoLogin: TTipoLogin): Boolean; stdcall;
     function  SetAtleta(const Atleta: TAtleta): Boolean; stdcall;
     function  SetCampo(const Campo: TCampo): Boolean; stdcall;
     function  SetPartida(const Partida: TPartida): Boolean; stdcall;
@@ -337,13 +325,10 @@ begin
     else
       Addr := defURL;
   end;
-
   if HTTPRIO = nil then
     RIO := THTTPRIO.Create(nil)
   else
     RIO := HTTPRIO;
-
-
   try
     Result := (RIO as IWSFutSystem);
     if UseWSDL then
