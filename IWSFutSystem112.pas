@@ -337,10 +337,12 @@ begin
     else
       Addr := defURL;
   end;
+
   if HTTPRIO = nil then
     RIO := THTTPRIO.Create(nil)
   else
     RIO := HTTPRIO;
+
   try
     Result := (RIO as IWSFutSystem);
     if UseWSDL then
