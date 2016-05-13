@@ -3,7 +3,7 @@ object FrmPrincipal: TFrmPrincipal
   Top = 0
   Caption = '...:::WS Client :::...'
   ClientHeight = 340
-  ClientWidth = 615
+  ClientWidth = 606
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -20,7 +20,7 @@ object FrmPrincipal: TFrmPrincipal
   object pnlTitulo: TPanel
     Left = 0
     Top = 0
-    Width = 615
+    Width = 606
     Height = 41
     Align = alTop
     Caption = 'Client FutSystem'
@@ -33,6 +33,7 @@ object FrmPrincipal: TFrmPrincipal
     ParentBackground = False
     ParentFont = False
     TabOrder = 0
+    ExplicitWidth = 615
   end
   object btnAtleta: TButton
     Left = 8
